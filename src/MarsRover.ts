@@ -26,7 +26,7 @@ export class MarsRover {
                 this.currentlocation.point.y++;
             },
             [Directions.EAST]: () => {
-                this.currentlocation.point.x--;
+                this.currentlocation.direction = Directions.NORTH
             },
             [Directions.WEST]: () => {
                 this.currentlocation.point.x++;
