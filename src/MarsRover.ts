@@ -24,7 +24,7 @@ export class MarsRover {
     }
 
     turnRight() {
-        let nextLocation = this.cloneLocation(this.currentlocation);
+        let nextLocation = this.getCurrentLocation().cloneLocation();
         const turnRightMap = {
             [Directions.NORTH]: () => {
                 nextLocation.direction = Directions.EAST;
@@ -47,7 +47,7 @@ export class MarsRover {
     }
 
     turnLeft() {
-        let nextLocation = this.cloneLocation(this.currentlocation);
+        let nextLocation = this.getCurrentLocation().cloneLocation();
         const turnLeftMap = {
             [Directions.NORTH]: () => {
                 nextLocation.direction = Directions.WEST;
@@ -70,7 +70,7 @@ export class MarsRover {
     }
 
     moveBackward() {
-        let nextLocation = this.cloneLocation(this.currentlocation);
+        let nextLocation = this.getCurrentLocation().cloneLocation();
         const moveBackwardMap = {
             [Directions.NORTH]: () => {
                 nextLocation.point.y--;
@@ -93,7 +93,7 @@ export class MarsRover {
     }
 
     moveForward() {
-        let nextLocation = this.cloneLocation(this.currentlocation);
+        let nextLocation = this.getCurrentLocation().cloneLocation();
         const moveForwardMap = {
             [Directions.NORTH]: () => {
                 nextLocation.point.y++;
@@ -114,9 +114,7 @@ export class MarsRover {
         }
         return moveForwardMap[this.currentlocation.direction]();
     }
-    cloneLocation(location: Location) {
-        return new Location(new Point(this.currentlocation.point.x, this.currentlocation.point.y), Directions[this.currentlocation.direction]);
-    }
+
 
     deploy(location: Location) {
         this.currentlocation = location;

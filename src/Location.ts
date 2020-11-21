@@ -13,4 +13,8 @@ export class Location {
     toString() {
         return `(${this.point.x},${this.point.y}) ${this.direction}${this.isStopped ? " STOPPED" : ""}`;
     }
+
+    cloneLocation() {
+        return new Location(new Point(this.point.x, this.point.y), Directions[this.direction]);
+    }
 }
