@@ -13,6 +13,25 @@ export class MarsRover {
     loadCommands() {
         this.commands = new Map<string, Function>();
         this.commands.set("F", () => { this.moveForward() });
+        this.commands.set("B", () => { this.moveBackward() });
+    }
+
+    moveBackward() {
+        const moveBackwardMap = {
+            [Directions.NORTH]: () => {
+                this.currentlocation.point.y--
+            },
+            [Directions.SOUTH]: () => {
+                this.currentlocation.point.y--;
+            },
+            [Directions.EAST]: () => {
+                this.currentlocation.point.x++;
+            },
+            [Directions.WEST]: () => {
+                this.currentlocation.point.x--;
+            }
+        }
+        moveBackwardMap[this.currentlocation.direction]();
     }
 
     moveForward() {
@@ -28,7 +47,7 @@ export class MarsRover {
             },
             [Directions.WEST]: () => {
                 this.currentlocation.point.x--;
-            },
+            }
         }
         moveForwardMap[this.currentlocation.direction]();
     }
