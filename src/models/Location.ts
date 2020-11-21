@@ -1,4 +1,4 @@
-import { Directions } from "./constants/Directions";
+import { Directions } from "../constants/Directions";
 import { Point } from "./Point";
 
 export class Location {
@@ -9,9 +9,6 @@ export class Location {
     constructor(point: Point, direction: Directions) {
         this.point = point;
         this.direction = direction;
-    }
-    toString() {
-        return `(${this.point.x},${this.point.y}) ${this.direction}${this.isStopped ? " STOPPED" : ""}`;
     }
 
     cloneLocation() {

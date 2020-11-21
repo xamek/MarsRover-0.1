@@ -1,14 +1,14 @@
 import { Directions } from "../src/constants/Directions";
-import { Location } from "../src/Location";
-import { MarsRover } from "../src/MarsRover";
-import { Point } from "../src/Point";
+import { Location } from "../src/models/Location";
+import { MarsRover } from "../src/models/MarsRover";
+import { Point } from "../src/models/Point";
 
 test("should get correct location when deployed", () => {
     const startLocation = new Point(0, 0);
     const marsRover = new MarsRover();
     const location = new Location(startLocation, Directions.NORTH);
     marsRover.deploy(location);
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) NORTH");
+    expect(marsRover.getStatus()).toBe("(0,0) NORTH");
 })
 test("should get correct location when moved forward facing north", () => {
     const startLocation = new Point(0, 0);
@@ -16,7 +16,7 @@ test("should get correct location when moved forward facing north", () => {
     const location = new Location(startLocation, Directions.NORTH);
     marsRover.deploy(location);
     marsRover.executeCommands("F");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,1) NORTH");
+    expect(marsRover.getStatus()).toBe("(0,1) NORTH");
 })
 test("should get correct location when moved forward facing south", () => {
     const startLocation = new Point(0, 0);
@@ -24,7 +24,7 @@ test("should get correct location when moved forward facing south", () => {
     const location = new Location(startLocation, Directions.SOUTH);
     marsRover.deploy(location);
     marsRover.executeCommands("F");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,-1) SOUTH");
+    expect(marsRover.getStatus()).toBe("(0,-1) SOUTH");
 })
 
 test("should get correct location when moved forward facing east", () => {
@@ -33,7 +33,7 @@ test("should get correct location when moved forward facing east", () => {
     const location = new Location(startLocation, Directions.EAST);
     marsRover.deploy(location);
     marsRover.executeCommands("F");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(1,0) EAST");
+    expect(marsRover.getStatus()).toBe("(1,0) EAST");
 })
 
 test("should get correct location when moved forward facing west", () => {
@@ -42,7 +42,7 @@ test("should get correct location when moved forward facing west", () => {
     const location = new Location(startLocation, Directions.WEST);
     marsRover.deploy(location);
     marsRover.executeCommands("F");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(-1,0) WEST");
+    expect(marsRover.getStatus()).toBe("(-1,0) WEST");
 })
 
 test("should get correct location when moved backword facing north", () => {
@@ -51,7 +51,7 @@ test("should get correct location when moved backword facing north", () => {
     const location = new Location(startLocation, Directions.NORTH);
     marsRover.deploy(location);
     marsRover.executeCommands("B");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,-1) NORTH");
+    expect(marsRover.getStatus()).toBe("(0,-1) NORTH");
 })
 
 test("should get correct location when moved backword facing south", () => {
@@ -60,7 +60,7 @@ test("should get correct location when moved backword facing south", () => {
     const location = new Location(startLocation, Directions.SOUTH);
     marsRover.deploy(location);
     marsRover.executeCommands("B");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,1) SOUTH");
+    expect(marsRover.getStatus()).toBe("(0,1) SOUTH");
 })
 
 test("should get correct location when moved backword facing east", () => {
@@ -69,7 +69,7 @@ test("should get correct location when moved backword facing east", () => {
     const location = new Location(startLocation, Directions.EAST);
     marsRover.deploy(location);
     marsRover.executeCommands("B");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(-1,0) EAST");
+    expect(marsRover.getStatus()).toBe("(-1,0) EAST");
 })
 
 test("should get correct location when moved backword facing west", () => {
@@ -78,7 +78,7 @@ test("should get correct location when moved backword facing west", () => {
     const location = new Location(startLocation, Directions.WEST);
     marsRover.deploy(location);
     marsRover.executeCommands("B");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(1,0) WEST");
+    expect(marsRover.getStatus()).toBe("(1,0) WEST");
 })
 
 test("should get correct location when rotated left facing north", () => {
@@ -87,7 +87,7 @@ test("should get correct location when rotated left facing north", () => {
     const location = new Location(startLocation, Directions.NORTH);
     marsRover.deploy(location);
     marsRover.executeCommands("L");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) WEST");
+    expect(marsRover.getStatus()).toBe("(0,0) WEST");
 })
 
 test("should get correct location when rotated left facing east", () => {
@@ -96,7 +96,7 @@ test("should get correct location when rotated left facing east", () => {
     const location = new Location(startLocation, Directions.EAST);
     marsRover.deploy(location);
     marsRover.executeCommands("L");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) NORTH");
+    expect(marsRover.getStatus()).toBe("(0,0) NORTH");
 })
 
 test("should get correct location when rotated left facing south", () => {
@@ -105,7 +105,7 @@ test("should get correct location when rotated left facing south", () => {
     const location = new Location(startLocation, Directions.SOUTH);
     marsRover.deploy(location);
     marsRover.executeCommands("L");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) EAST");
+    expect(marsRover.getStatus()).toBe("(0,0) EAST");
 })
 
 test("should get correct location when rotated left facing west", () => {
@@ -114,7 +114,7 @@ test("should get correct location when rotated left facing west", () => {
     const location = new Location(startLocation, Directions.WEST);
     marsRover.deploy(location);
     marsRover.executeCommands("L");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) SOUTH");
+    expect(marsRover.getStatus()).toBe("(0,0) SOUTH");
 })
 
 test("should get correct location when rotated right facing north", () => {
@@ -123,7 +123,7 @@ test("should get correct location when rotated right facing north", () => {
     const location = new Location(startLocation, Directions.NORTH);
     marsRover.deploy(location);
     marsRover.executeCommands("R");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) EAST");
+    expect(marsRover.getStatus()).toBe("(0,0) EAST");
 })
 
 test("should get correct location when rotated right facing east", () => {
@@ -132,7 +132,7 @@ test("should get correct location when rotated right facing east", () => {
     const location = new Location(startLocation, Directions.EAST);
     marsRover.deploy(location);
     marsRover.executeCommands("R");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) SOUTH");
+    expect(marsRover.getStatus()).toBe("(0,0) SOUTH");
 })
 
 test("should get correct location when rotated right facing south", () => {
@@ -141,7 +141,7 @@ test("should get correct location when rotated right facing south", () => {
     const location = new Location(startLocation, Directions.SOUTH);
     marsRover.deploy(location);
     marsRover.executeCommands("R");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) WEST");
+    expect(marsRover.getStatus()).toBe("(0,0) WEST");
 })
 
 test("should get correct location when rotated right facing west", () => {
@@ -150,7 +150,7 @@ test("should get correct location when rotated right facing west", () => {
     const location = new Location(startLocation, Directions.WEST);
     marsRover.deploy(location);
     marsRover.executeCommands("R");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) NORTH");
+    expect(marsRover.getStatus()).toBe("(0,0) NORTH");
 })
 
 test("should get correct location when using multiple commands", () => {
@@ -159,7 +159,7 @@ test("should get correct location when using multiple commands", () => {
     const location = new Location(startLocation, Directions.NORTH);
     marsRover.deploy(location);
     marsRover.executeCommands("RFLFFFRFLB");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(2,2) NORTH");
+    expect(marsRover.getStatus()).toBe("(2,2) NORTH");
 })
 
 test("should get correct location when using multiple commands using provided sample", () => {
@@ -168,7 +168,7 @@ test("should get correct location when using multiple commands using provided sa
     const location = new Location(startLocation, Directions.EAST);
     marsRover.deploy(location);
     marsRover.executeCommands("FLFFFRFLB");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(6,4) NORTH");
+    expect(marsRover.getStatus()).toBe("(6,4) NORTH");
 })
 
 test("should stop and report correct location when facing an obstacle", () => {
@@ -177,5 +177,5 @@ test("should stop and report correct location when facing an obstacle", () => {
     const location = new Location(startLocation, Directions.NORTH);
     marsRover.deploy(location);
     marsRover.executeCommands("RFLFFFF");
-    expect(marsRover.getCurrentLocation().toString()).toBe("(1,3) NORTH STOPPED");
+    expect(marsRover.getStatus()).toBe("(1,3) NORTH STOPPED");
 })
