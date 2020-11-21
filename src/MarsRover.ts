@@ -15,6 +15,25 @@ export class MarsRover {
         this.commands.set("F", () => { this.moveForward() });
         this.commands.set("B", () => { this.moveBackward() });
         this.commands.set("L", () => { this.turnLeft() });
+        this.commands.set("R", () => { this.turnRight() });
+    }
+
+    turnRight() {
+        const turnRightMap = {
+            [Directions.NORTH]: () => {
+                this.currentlocation.direction = Directions.EAST;
+            },
+            [Directions.SOUTH]: () => {
+                this.currentlocation.direction = Directions.EAST;
+            },
+            [Directions.EAST]: () => {
+                this.currentlocation.direction = Directions.NORTH;
+            },
+            [Directions.WEST]: () => {
+                this.currentlocation.direction = Directions.SOUTH;
+            }
+        }
+        turnRightMap[this.currentlocation.direction]();
     }
 
     turnLeft() {
