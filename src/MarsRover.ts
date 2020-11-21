@@ -29,7 +29,7 @@ export class MarsRover {
                 this.currentlocation.direction = Directions.NORTH;
             },
             [Directions.WEST]: () => {
-                this.currentlocation.point.x++;
+                this.currentlocation.direction = Directions.SOUTH;
             }
         }
         turnLeftMap[this.currentlocation.direction]();
