@@ -62,3 +62,12 @@ test("should get correct location when moved backword facing south", () => {
     marsRover.executeCommands("B");
     expect(marsRover.getCurrentLocation().toString()).toBe("(0,1) SOUTH");
 })
+
+test("should get correct location when moved backword facing east", () => {
+    const startLocation = new Point(0, 0);
+    const marsRover = new MarsRover();
+    const location = new Location(startLocation, Directions.EAST);
+    marsRover.deploy(location);
+    marsRover.executeCommands("B");
+    expect(marsRover.getCurrentLocation().toString()).toBe("-1,0) EAST");
+})
