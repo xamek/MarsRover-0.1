@@ -28,7 +28,7 @@ export class MarsRover {
                 this.currentlocation.point.x--;
             },
             [Directions.WEST]: () => {
-                this.currentlocation.point.x--;
+                this.currentlocation.point.x++;
             }
         }
         moveBackwardMap[this.currentlocation.direction]();
