@@ -162,6 +162,15 @@ test("should get correct location when using multiple commands", () => {
     expect(marsRover.getCurrentLocation().toString()).toBe("(2,2) NORTH");
 })
 
+test("should get correct location when using multiple commands using provided sample", () => {
+    const startLocation = new Point(4, 2);
+    const marsRover = new MarsRover();
+    const location = new Location(startLocation, Directions.EAST);
+    marsRover.deploy(location);
+    marsRover.executeCommands("FLFFFRFLB");
+    expect(marsRover.getCurrentLocation().toString()).toBe("(6,4) NORTH");
+})
+
 test("should stop and report correct location when facing an obstacle", () => {
     const startLocation = new Point(0, 0);
     const marsRover = new MarsRover();
