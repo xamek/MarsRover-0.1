@@ -4,11 +4,13 @@ import { Point } from "./Point";
 export class Location {
     point: Point;
     direction: Directions;
+    isStopped: boolean = false;
+
     constructor(point: Point, direction: Directions) {
         this.point = point;
         this.direction = direction;
     }
     toString() {
-        return `(${this.point.x},${this.point.y}) ${this.direction}`
+        return `(${this.point.x},${this.point.y}) ${this.direction}${this.isStopped ? " STOPPED" : ""}`;
     }
 }
