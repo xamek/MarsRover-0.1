@@ -1,6 +1,6 @@
 import { Location } from "./Location";
 import { moveForwardMap, moveBackwardMap, turnLeftMap, turnRightMap } from "../constants/instructions";
-import { Point } from "./Point";
+import { ObstacleDetector } from "./ObstacleDetector";
 
 export class MarsRover {
 
@@ -53,7 +53,7 @@ export class MarsRover {
             const command = this.commands.get(commandKey);
             if (command) {
                 const nextLocation = command();
-                if (this.isObstacle(nextLocation)) {
+                if (ObstacleDetector.isObstacle(nextLocation)) {
                     this.isStopped = true;
                     break;
                 }
@@ -63,13 +63,6 @@ export class MarsRover {
                 }
             }
         }
-    }
-
-    getObstacles() {
-        return [new Point(1, 4), new Point(3, 5), new Point(7, 4)];
-    }
-    isObstacle(location: Location) {
-        return this.getObstacles().some((obstacle) => { return location.point.x == obstacle.x && location.point.y == obstacle.y });
     }
 
     getStatus() {
