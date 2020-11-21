@@ -20,13 +20,13 @@ export class MarsRover {
     turnLeft() {
         const turnLeftMap = {
             [Directions.NORTH]: () => {
-                this.currentlocation.direction = Directions.WEST
+                this.currentlocation.direction = Directions.WEST;
             },
             [Directions.SOUTH]: () => {
-                this.currentlocation.point.y++;
+                this.currentlocation.direction = Directions.EAST;
             },
             [Directions.EAST]: () => {
-                this.currentlocation.direction = Directions.NORTH
+                this.currentlocation.direction = Directions.NORTH;
             },
             [Directions.WEST]: () => {
                 this.currentlocation.point.x++;
