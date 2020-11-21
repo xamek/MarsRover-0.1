@@ -89,3 +89,12 @@ test("should get correct location when rotated left facing north", () => {
     marsRover.executeCommands("L");
     expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) WEST");
 })
+
+test("should get correct location when rotated left facing east", () => {
+    const startLocation = new Point(0, 0);
+    const marsRover = new MarsRover();
+    const location = new Location(startLocation, Directions.EAST);
+    marsRover.deploy(location);
+    marsRover.executeCommands("L");
+    expect(marsRover.getCurrentLocation().toString()).toBe("(0,0) NORTH");
+})
