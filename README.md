@@ -9,9 +9,10 @@ run:
 npm install
 ```
 to run tests:
-
+```
 - npm run test
-
+```
 to run API server:
-
+```
 - npm run start
+```
