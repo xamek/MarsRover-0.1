@@ -179,3 +179,12 @@ test("should stop and report correct location when facing an obstacle", () => {
     marsRover.executeCommands("RFLFFFF");
     expect(marsRover.getStatus()).toBe("(1,3) NORTH STOPPED");
 })
+
+test("should return exception when wrong command is executed", () => {
+    const startLocation = new Point(0, 0);
+    const marsRover = new MarsRover();
+    const location = new Location(startLocation, Directions.NORTH);
+    marsRover.deploy(location);
+    marsRover.executeCommands("X");
+    expect(marsRover.executeCommands).toThrowError("Invalid Command");
+})
