@@ -16,3 +16,5 @@ to run API server:
 ```
 npm run start
 ```
+use this url to test API server:
+http://localhost:8080/deployAndMove?start=4.2&direction=EAST&command=FLFFFRFLB
