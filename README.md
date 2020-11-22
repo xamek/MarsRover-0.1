@@ -5,9 +5,9 @@ a solution to Mars Rover kata
 to run the application you need node installed 
 
 run:
-
-- npm install
-
+```
+npm install
+```
 to run tests:
 
 - npm run test
