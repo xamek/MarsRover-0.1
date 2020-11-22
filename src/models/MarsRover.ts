@@ -62,6 +62,9 @@ export class MarsRover {
                     this.currentlocation = nextLocation;
                 }
             }
+            else {
+                throw new Error("Invalid Command");
+            }
         }
     }
 

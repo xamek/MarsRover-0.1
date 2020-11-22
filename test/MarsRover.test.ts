@@ -185,6 +185,5 @@ test("should return exception when wrong command is executed", () => {
     const marsRover = new MarsRover();
     const location = new Location(startLocation, Directions.NORTH);
     marsRover.deploy(location);
-    marsRover.executeCommands("X");
-    expect(marsRover.executeCommands).toThrowError("Invalid Command");
+    expect(() => { marsRover.executeCommands("X") }).toThrowError("Invalid Command");
 })
